@@ -1,4 +1,0 @@
-- file:
-    src: "{{ home_dir }}/Desktop"
-    dest: "{{ home_dir }}/.local/share/applications/Desktop"
-    state: link

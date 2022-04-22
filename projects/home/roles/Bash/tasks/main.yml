@@ -1,8 +1,0 @@
-- name: Set up aliases
-  lineinfile:
-    path: "/home/{{ user }}/.bash_aliases"
-    backup: yes
-    create: yes
-    line: "alias {{ item }}"
-  with_items:
-    - ll='ls -alF'

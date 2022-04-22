@@ -1,7 +1,0 @@
-<phpunit bootstrap="./vendor/doctrine/autoload.php">
-    <testsuites>
-        <testsuite name="Tests">
-            <directory suffix="Test.php">packages/Doctrine/*/tests</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>

@@ -1,2 +1,0 @@
-DELETE FROM t WHERE v = 1;
-DELETE t WHERE v = 2;
