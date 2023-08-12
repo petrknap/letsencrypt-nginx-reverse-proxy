@@ -3,7 +3,8 @@ set -e
 
 rm /etc/nginx/conf.d/*
 
-for RULE in `echo "${RULES}" | sed "s/,/\n/g"`; do (
+# shellcheck disable=SC2153,SC2001
+for RULE in $(echo "${RULES}" | sed "s/,/\n/g"); do (
     DOMAIN=$(echo "${RULE}" | cut -d ">" -f 1)
     TARGET=$(echo "${RULE}" | cut -d ">" -f 2)
     SSL_PATH="/etc/letsencrypt/live/${DOMAIN}"

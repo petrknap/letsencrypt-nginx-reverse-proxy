@@ -3,17 +3,21 @@ ARG NGINX_VERSION=1.19
 
 FROM nginx:${NGINX_VERSION}
 
-RUN apt update \
-    && apt install -y \
-        openssl \
-        certbot \
-    && openssl req -x509 -nodes -days 36500 -newkey rsa:4096 -keyout /selfsigned.key -out /selfsigned.crt \
-        -subj "/O=Petr Knap/CN=petrknap.cz/" \
-    && apt clean \
-    && rm  -rf \
-        /var/lib/apt/lists/* \
-        /tmp/* \
-        /var/tmp/* \
+EXPOSE 80
+EXPOSE 443
+
+# hadolint ignore=DL3008,DL3015
+RUN apt-get update \
+ && apt-get install -y \
+      openssl \
+      certbot \
+ && openssl req -x509 -nodes -days 36500 -newkey rsa:4096 -keyout /selfsigned.key -out /selfsigned.crt \
+      -subj "/O=Petr Knap/CN=petrknap.cz/" \
+ && apt-get clean \
+ && rm  -rf \
+      /var/lib/apt/lists/* \
+      /tmp/* \
+      /var/tmp/* \
 ;
 
 COPY *.bash /
@@ -47,9 +51,11 @@ ENV DEFAULT_SERVER='\
     return 404;\
 '
 
-CMD bash /command.bash
-
 HEALTHCHECK --interval=15s --timeout=2s --retries=3 CMD curl --fail http://localhost/
 
-EXPOSE 80
-EXPOSE 443
+CMD ["bash", "/command.bash"]
+
+LABEL org.opencontainers.image.title="Let's Encrypt NGINX reverse proxy" \
+      org.opencontainers.image.description="HTTP/HTTPS reverse proxy based on NGINX and Let's Encrypt" \
+      org.opencontainers.image.authors="Petr Knap <8299754+petrknap@users.noreply.github.com>" \
+      org.opencontainers.image.url="https://github.com/petrknap/letsencrypt-nginx-reverse-proxy/" \

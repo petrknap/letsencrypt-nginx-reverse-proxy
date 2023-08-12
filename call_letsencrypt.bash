@@ -10,7 +10,8 @@ SWITCHES="--non-interactive --webroot --webroot-path /tmp/letsencrypt --agree-to
 
 eval "${COMMAND} renew ${SWITCHES} || ${IGNORE_LETS_ENCRYPT_RENEW_ERRORS} || ${IGNORE_LETS_ENCRYPT_ALL_ERRORS}"
 
-for RULE in `echo "${RULES}" | sed "s/,/\n/g"`; do (
+# shellcheck disable=SC2153,SC2001
+for RULE in $(echo "${RULES}" | sed "s/,/\n/g"); do (
     DOMAIN=$(echo "${RULE}" | cut -d ">" -f 1);
     SSL_PATH="/etc/letsencrypt/live/${DOMAIN}"
 
