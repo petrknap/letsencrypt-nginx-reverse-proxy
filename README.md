@@ -43,7 +43,7 @@ spec:
           image: petrknap/letsencrypt-nginx-reverse-proxy:latest
           env:
             - name: RULES
-              value: petrknap.cz>web-apache,mail.petrknap.cz>mail-nginx
+              value: petrknap.cz>web,mail.petrknap.cz>mail
           volumeMounts:
             - name: reverse-proxy-letsencrypt
               mountPath: /etc/letsencrypt
