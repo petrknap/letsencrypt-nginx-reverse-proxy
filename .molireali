@@ -1,5 +1,6 @@
 authors
 donation
-github-workflow linter-bash
+docker-scripts petrknap/letsencrypt-nginx-reverse-proxy
+github-workflow linter-shell
 github-workflow linter-docker
 license LGPL-3.0-or-later
