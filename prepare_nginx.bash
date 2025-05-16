@@ -29,6 +29,7 @@ server {
   listen [::]:80;
 
   server_name ${DOMAIN};
+  server_tokens off;
 
   location '/' {
     return 301 https://\$server_name\$request_uri;
@@ -44,6 +45,7 @@ server {
   listen [::]:443 ssl;
 
   server_name ${DOMAIN};
+  server_tokens off;
 
   ssl_certificate ${SSL_CERT};
   ssl_certificate_key ${SSL_KEY};

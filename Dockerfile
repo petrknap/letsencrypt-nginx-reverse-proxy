@@ -1,5 +1,4 @@
-ARG PROJECT_VERSION=1.3.0
-ARG NGINX_VERSION=1.25
+ARG NGINX_VERSION=1.28.0
 
 FROM nginx:${NGINX_VERSION}
 
@@ -48,6 +47,7 @@ ENV UPSTREAMS='\
 #   } \
 '
 ENV DEFAULT_SERVER='\
+    server_tokens off;\
     return 404;\
 '
 
