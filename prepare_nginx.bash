@@ -67,6 +67,7 @@ server {
   listen 80 default_server;
   listen [::]:80 default_server;
 
+  server_tokens off;
   ${DEFAULT_SERVER}
 }
 
@@ -77,6 +78,7 @@ server {
   ssl_certificate /selfsigned.crt;
   ssl_certificate_key /selfsigned.key;
 
+  server_tokens off;
   ${DEFAULT_SERVER}
 }
 EoS

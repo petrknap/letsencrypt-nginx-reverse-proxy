@@ -47,7 +47,6 @@ ENV UPSTREAMS='\
 #   } \
 '
 ENV DEFAULT_SERVER='\
-    server_tokens off;\
     return 404;\
 '
 
